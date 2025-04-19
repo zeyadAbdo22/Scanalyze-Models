@@ -4,11 +4,9 @@ import numpy as np
 from PIL import Image
 import io
 from fastapi import APIRouter
-from utils import load_model_from_kaggle
+from utils import load_model_from_azure
 
-model = load_model_from_kaggle(
-    'aliamrali', 'medical_scan_checker', 'v2', 'medical_scan_checker.h5'
-)
+model = load_model_from_azure("https://scanalyzestorage.blob.core.windows.net/loadmodel/medical_scan_checker.h5")
 
 
 def prepare_image(img_bytes):
