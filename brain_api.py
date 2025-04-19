@@ -25,23 +25,6 @@ async def root():
         "message": "Brain Tumor Detection API is running"
     }
 
-
-# @router.on_event("startup")
-# async def startup_event():
-#     """Initialize model on startup"""
-#     try:
-#         logger.info("Starting brain model initialization...")
-#         brain_model = load_model_from_kaggle(
-#             "khalednabawi", 'brain-tumor-resnet', "v2", 'tb_resnet.h5')
-#         logger.info("Brain model initialized successfully!")
-#         # Store model in app state
-#         router.app.state.brain_model = brain_model
-#     except Exception as e:
-#         logger.error(f"Error during startup: {str(e)}")
-#         raise HTTPException(
-#             status_code=500, detail="Model initialization failed")
-
-
 @router.post("/predict")
 async def predict(request: Request, file: UploadFile = File(...)):
     """

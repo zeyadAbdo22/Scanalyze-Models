@@ -1,4 +1,3 @@
-# main.py
 from fastapi import File, UploadFile, APIRouter, Request, HTTPException
 from PIL import Image
 import io
@@ -9,7 +8,7 @@ from tensorflow.keras.preprocessing import image
 from fastapi.responses import JSONResponse
 from similarity import check_similarity
 
-# from utils import preprocess_image
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -25,17 +24,7 @@ CLASS_NAMES = {0: "Normal", 1: "Pneumonia"}
 def read_root():
     return {"message": "X-ray Pneumonia Classifier is live!"}
 
-# @app.on_event("startup")
-# async def startup_event():
-#     """Initialize model on startup"""
-#     global model
-#     try:
-#         logger.info("Starting model initialization...")
-#         model = load_model_from_kaggle()
-#         logger.info("Model initialized successfully!")
-#     except Exception as e:
-#         logger.error(f"Error during startup: {str(e)}")
-#         raise
+
 
 
 def preprocess_image(img):

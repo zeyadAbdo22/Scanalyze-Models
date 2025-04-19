@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File, HTTPException, Request
-from utils import preprocess_image, load_model_from_kaggle
+from utils import preprocess_image
 import logging
 from io import BytesIO
 from PIL import Image

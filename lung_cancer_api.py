@@ -5,7 +5,7 @@ from io import BytesIO
 import json
 import tensorflow as tf
 import numpy as np
-from utils import load_model_from_kaggle, preprocess_image
+from utils import preprocess_image
 from similarity import check_similarity
 from fastapi.responses import JSONResponse
 
@@ -18,40 +18,11 @@ router = APIRouter()
 # Define class labels
 LUNG_CLASSES = {0: "Adenocarcinoma", 1: "Benign", 2: "Squamous Cell Carcinoma"}
 
-# def preprocess_image(img: Image.Image):
-#     img = img.resize((IMG_SIZE, IMG_SIZE))
-#     img_array = image.img_to_array(img)
-#     img_array = np.expand_dims(img_array, axis=0)
-#     return preprocess_input(img_array)
-
-
-# def load_and_prepare_image(file: UploadFile):
-#     """Reads image file and returns preprocessed image array."""
-#     contents = file.file.read()
-#     img = Image.open(io.BytesIO(contents)).convert("RGB")
-#     return preprocess_image(img)
-
 
 @router.get("/")
 async def root():
     """Health check endpoint"""
     return {"message": "Lung Cancer Detection API is running"}
-
-
-# @app.post("/lung-cancer")
-# async def predict_lung(file: UploadFile = File(...)):
-#     try:
-#         img_array = load_and_prepare_image(file)
-#         label, confidence, raw = make_prediction(lung_model, img_array, LUNG_CLASSES)
-
-#         return {
-#             "success": True,
-#             "prediction": label,
-#             "confidence": round(confidence, 4),
-#             "raw": raw
-#         }
-#     except Exception as e:
-#         return {"success": False, "error": str(e)}
 
 
 @router.post("/predict")

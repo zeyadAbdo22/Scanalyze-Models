@@ -1,4 +1,3 @@
-# main.py
 from PIL import Image
 import io
 import logging
